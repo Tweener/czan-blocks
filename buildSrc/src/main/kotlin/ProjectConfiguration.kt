@@ -7,8 +7,8 @@ import org.gradle.api.JavaVersion
 
 object ProjectConfiguration {
 
-    object MyProject {
-        const val packageName = "com.tweener.changehere"
+    object CzanBlocks {
+        const val packageName = "com.tweener.czan.blocks"
         const val versionName = "1.0.0"
         const val namespace = "$packageName.android"
         const val compileSDK = 35

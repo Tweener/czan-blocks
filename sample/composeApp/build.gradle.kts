@@ -22,7 +22,7 @@ kotlin {
             isStatic = true
 
             // Add here any extra framework dependencies
-            export(project(":changehere"))
+            export(project(":czan_blocks"))
         }
     }
 
@@ -30,7 +30,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            api(project(":changehere"))
+            api(project(":czan_blocks"))
 
             // Tweener
             implementation(libs.tweener.kmpkit)
@@ -51,13 +51,13 @@ kotlin {
 }
 
 android {
-    namespace = ProjectConfiguration.MyProject.packageName + ".sample"
-    compileSdk = ProjectConfiguration.MyProject.compileSDK
+    namespace = ProjectConfiguration.CzanBlocks.packageName + ".sample"
+    compileSdk = ProjectConfiguration.CzanBlocks.compileSDK
 
     defaultConfig {
-        applicationId = ProjectConfiguration.MyProject.packageName + ".sample"
-        minSdk = ProjectConfiguration.MyProject.minSDK
-        targetSdk = ProjectConfiguration.MyProject.compileSDK
+        applicationId = ProjectConfiguration.CzanBlocks.packageName + ".sample"
+        minSdk = ProjectConfiguration.CzanBlocks.minSDK
+        targetSdk = ProjectConfiguration.CzanBlocks.compileSDK
         versionCode = 1
         versionName = "1.0"
     }

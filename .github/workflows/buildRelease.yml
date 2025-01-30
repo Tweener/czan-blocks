@@ -1,4 +1,4 @@
-name: Kmplate_Library build
+name: Czan_blocks build
 
 on:
   workflow_call:

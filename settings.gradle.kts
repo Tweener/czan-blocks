@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Kmplate_Library"
-include(":changehere")
+rootProject.name = "Czan_blocks"
+include(":czan_blocks")
 include(":sample:composeApp")
