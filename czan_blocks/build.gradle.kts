@@ -86,7 +86,8 @@ kotlin {
             implementation(libs.android.annotations)
 
             // Tweener
-            implementation(libs.tweener.kmpkit)
+            implementation(libs.kmpkit)
+            implementation(libs.czan)
 
             // Coroutines
             implementation(libs.kotlin.coroutines.core)

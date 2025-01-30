@@ -8,16 +8,18 @@ androidAnnotations = "1.9.1"
 coroutines = "1.9.0"
 napier = "2.7.1"
 composeMultiplatform = "1.7.3"
-kmpKit = "1.0.1"
+kmpKit = "1.0.2"
+czan = "2.9.0"
 
 # Android
 androidCore = "1.15.0"
-androidActivity = "1.9.3"
+androidActivity = "1.10.0"
 
 [libraries]
 napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
 compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "composeMultiplatform" }
-tweener-kmpkit = { group = "io.github.tweener", name = "kmpkit", version.ref = "kmpKit" }
+kmpkit = { group = "io.github.tweener", name = "kmpkit", version.ref = "kmpKit" }
+czan = { group = "io.github.tweener", name = "czan", version.ref = "czan" }
 
 # Coroutines
 kotlin-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }

@@ -14,10 +14,9 @@ object ProjectConfiguration {
         const val compileSDK = 35
         const val minSDK = 24
 
-        // TODO Change all the values in this block to your needs
         object Maven {
             const val name = "MyKMPLibrary"
-            const val description = "All Tweener commons stuff for Kotlin Multiplatform"
+            const val description = "Clean, customizable blocks for Kotlin/Compose Multiplatform apps based on CZAN design system."
             const val group = "io.github.tweener"
             const val packageUrl = "https://github.com/Tweener/czan-blocks"
             const val gitUrl = "github.com:Tweener/czan-blocks.git"
