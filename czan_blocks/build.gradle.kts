@@ -50,7 +50,6 @@ kotlin {
     androidTarget {
         publishLibraryVariants("release")
 
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.fromTarget(ProjectConfiguration.Compiler.jvmTarget))
         }
@@ -66,6 +65,8 @@ kotlin {
             isStatic = true
         }
     }
+
+    jvm()
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
