@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.tweener.czan.blocks.preview.CzanThemePreview
+import com.tweener.czan.blocks.theme.CzanThemePreview
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.preview.UiModePreviews
 import com.tweener.czan.theme.Size

@@ -1,37 +1,17 @@
-package com.tweener.czan.blocks.preview
+package com.tweener.czan.blocks.theme
 
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.Shapes
-import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.tweener.czan.theme.CzanTheme
 import com.tweener.czan.theme.colorResource
 
 /**
  * @author Vivien Mahe
- * @since 18/12/2023
+ * @since 02/02/2025
  */
 
-@Composable
-fun CzanThemePreview(content: @Composable () -> Unit) {
-    CzanTheme(
-        lightColorScheme = CzanPreviewLightColorScheme,
-        darkColorScheme = CzanPreviewDarkColorScheme,
-        typography = CzanPreviewTypography,
-        shapes = CzanPreviewShapes,
-        content = content
-    )
-}
-
-// region Colors
 
 val ColorScheme.onBackgroundVariant: Color
     @Composable get() = colorResource(colorLight = light_onBackgroundVariant, colorDark = dark_onBackgroundVariant)
@@ -163,113 +143,3 @@ val CzanPreviewDarkColorScheme = darkColorScheme(
     outlineVariant = md_theme_dark_outlineVariant,
     scrim = md_theme_dark_scrim,
 )
-
-// endregion Colors
-
-// region Typography
-
-val CzanPreviewTypography = Typography(
-    labelLarge = TextStyle(
-        fontWeight = FontWeight.Medium,
-        letterSpacing = 0.sp,
-        lineHeight = 20.sp,
-        fontSize = 12.sp
-    ),
-    labelMedium = TextStyle(
-        fontWeight = FontWeight.Medium,
-        letterSpacing = 0.sp,
-        lineHeight = 16.sp,
-        fontSize = 10.sp
-    ),
-    labelSmall = TextStyle(
-        fontWeight = FontWeight.Medium,
-        letterSpacing = 0.sp,
-        lineHeight = 16.sp,
-        fontSize = 8.sp
-    ),
-    bodyLarge = TextStyle(
-        fontWeight = FontWeight.Normal,
-        letterSpacing = 0.sp,
-        lineHeight = 22.sp,
-        fontSize = 16.sp
-    ),
-    bodyMedium = TextStyle(
-        fontWeight = FontWeight.Normal,
-        letterSpacing = 0.sp,
-        lineHeight = 20.sp,
-        fontSize = 14.sp
-    ),
-    bodySmall = TextStyle(
-        fontWeight = FontWeight.Normal,
-        letterSpacing = 0.sp,
-        lineHeight = 16.sp,
-        fontSize = 12.sp
-    ),
-    headlineLarge = TextStyle(
-        fontWeight = FontWeight.Normal,
-        letterSpacing = 0.sp,
-        lineHeight = 48.sp,
-        fontSize = 32.sp
-    ),
-    headlineMedium = TextStyle(
-        fontWeight = FontWeight.Bold,
-        letterSpacing = 0.sp,
-        lineHeight = 36.sp,
-        fontSize = 28.sp
-    ),
-    headlineSmall = TextStyle(
-        fontWeight = FontWeight.Medium,
-        letterSpacing = 0.sp,
-        lineHeight = 32.sp,
-        fontSize = 24.sp
-    ),
-    displayLarge = TextStyle(
-        fontWeight = FontWeight.Normal,
-        letterSpacing = 0.sp,
-        lineHeight = 64.sp,
-        fontSize = 57.sp
-    ),
-    displayMedium = TextStyle(
-        fontWeight = FontWeight.Normal,
-        letterSpacing = 0.sp,
-        lineHeight = 52.sp,
-        fontSize = 45.sp
-    ),
-    displaySmall = TextStyle(
-        fontWeight = FontWeight.Normal,
-        letterSpacing = 0.sp,
-        lineHeight = 44.sp,
-        fontSize = 36.sp
-    ),
-    titleLarge = TextStyle(
-        fontWeight = FontWeight.Normal,
-        letterSpacing = 0.sp,
-        lineHeight = 28.sp,
-        fontSize = 22.sp
-    ),
-    titleMedium = TextStyle(
-        fontWeight = FontWeight.Bold,
-        letterSpacing = 0.sp,
-        lineHeight = 24.sp,
-        fontSize = 18.sp
-    ),
-    titleSmall = TextStyle(
-        fontWeight = FontWeight.Medium,
-        letterSpacing = 0.sp,
-        lineHeight = 20.sp,
-        fontSize = 16.sp
-    )
-)
-
-// endregion Typography
-
-// region Shapes
-
-val CzanPreviewShapes = Shapes(
-    small = RoundedCornerShape(4.dp),
-    medium = RoundedCornerShape(8.dp),
-    large = RoundedCornerShape(12.dp),
-    extraLarge = RoundedCornerShape(16.dp)
-)
-
-// endregion Shapes
