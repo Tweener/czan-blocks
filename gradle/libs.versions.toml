@@ -9,7 +9,7 @@ coroutines = "1.9.0"
 napier = "2.7.1"
 composeMultiplatform = "1.7.3"
 kmpKit = "1.0.2"
-czan = "2.9.0"
+czan = "2.9.1"
 
 # Android
 androidCore = "1.15.0"
