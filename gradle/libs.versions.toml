@@ -1,15 +1,16 @@
 [versions]
-kotlin = "2.1.0"
+kotlin = "2.1.10"
 gradle = "8.7.3"
 dependencyVersionsPlugin = "0.51.0"
 nexusSonatype = "2.0.0"
 dokka = "1.9.20"
 androidAnnotations = "1.9.1"
-coroutines = "1.9.0"
+coroutines = "1.10.1"
 napier = "2.7.1"
 composeMultiplatform = "1.7.3"
 kmpKit = "1.0.2"
 czan = "2.9.1"
+chartopia = "2.0.2"
 
 # Android
 androidCore = "1.15.0"
@@ -20,6 +21,7 @@ napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
 compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "composeMultiplatform" }
 kmpkit = { group = "io.github.tweener", name = "kmpkit", version.ref = "kmpKit" }
 czan = { group = "io.github.tweener", name = "czan", version.ref = "czan" }
+chartopia = { group = "io.github.tweener", name = "chartopia", version.ref = "chartopia" }
 
 # Coroutines
 kotlin-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }

@@ -104,6 +104,7 @@ kotlin {
             // Tweener
             implementation(libs.kmpkit)
             implementation(libs.czan)
+            implementation(libs.chartopia)
 
             // Coroutines
             implementation(libs.kotlin.coroutines.core)
