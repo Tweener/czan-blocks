@@ -16,11 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tweener.czan.blocks.sample.ui.theme.Czan_blocksTheme
+import com.tweener.czan.blocks.sample.ui.theme.CzanBlocksTheme
 
 @Composable
 fun App() {
-    Czan_blocksTheme {
+    CzanBlocksTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
             Column(
                 modifier = Modifier.fillMaxSize().padding(innerPadding),

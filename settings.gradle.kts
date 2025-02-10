@@ -15,6 +15,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Czan_blocks"
-include(":czan_blocks")
+rootProject.name = "Czan-blocks"
+include(":czan-blocks")
 include(":sample:composeApp")

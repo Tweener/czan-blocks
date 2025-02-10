@@ -1,4 +1,4 @@
-name: Czan_blocks build
+name: CzanBlocks build
 
 on:
   workflow_call:

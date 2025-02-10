@@ -61,7 +61,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "czan_blocks"
+            baseName = "czan-blocks"
             isStatic = true
         }
     }
@@ -72,7 +72,7 @@ kotlin {
     wasmJs {
         browser {
             commonWebpackConfig {
-                outputFileName = "czan_blocks.js"
+                outputFileName = "czan-blocks.js"
             }
         }
         binaries.executable()
@@ -81,7 +81,7 @@ kotlin {
     js(IR) {
         browser {
             commonWebpackConfig {
-                outputFileName = "czan_blocks.js"
+                outputFileName = "czan-blocks.js"
             }
         }
         binaries.executable()

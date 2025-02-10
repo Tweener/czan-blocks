@@ -22,7 +22,7 @@ kotlin {
             isStatic = true
 
             // Add here any extra framework dependencies
-            export(project(":czan_blocks"))
+            export(project(":czan-blocks"))
         }
     }
 
@@ -30,7 +30,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            api(project(":czan_blocks"))
+            api(project(":czan-blocks"))
 
             // Tweener
             implementation(libs.kmpkit)
