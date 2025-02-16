@@ -12,8 +12,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -28,24 +32,33 @@ import com.tweener.czan.theme.Size
 fun Block(
     title: String,
     modifier: Modifier = Modifier,
-    elevation: Dp = 0.dp,
+    shape: Shape = BlockDefaults.shape,
+    colors: BlockColors = BlockDefaults.colors(),
+    sizes: BlockSizes = BlockDefaults.sizes(),
     headline: String? = null,
+    onClick: (() -> Unit)? = null,
     extraTitle: @Composable (() -> Unit)? = null,
     footer: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
     Card(
         modifier = modifier,
+        shape = shape,
         colors = CardDefaults.colors(
-            containerColor = MaterialTheme.colorScheme.background,
-            contentColor = MaterialTheme.colorScheme.onBackground,
-            borderStrokeColor = MaterialTheme.colorScheme.outline,
+            containerColor = colors.containerColor(),
+            containerBrush = colors.containerBrush(),
+            contentColor = colors.contentColor(),
+            borderStrokeColor = colors.borderStrokeColor(),
+            shadowColor = colors.shadowColor(),
         ),
         sizes = CardDefaults.sizes(
-            elevation = elevation,
-            contentPadding = PaddingValues(Size.Padding.Default),
+            elevation = sizes.elevation(),
+            contentPadding = sizes.contentPadding(),
+            headerPadding = sizes.headerPadding(),
+            footerPadding = sizes.footerPadding(),
         ),
         showDividers = false,
+        onClick = onClick,
         header = {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -82,4 +95,87 @@ fun Block(
     ) {
         content()
     }
+}
+
+object BlockDefaults {
+
+    internal val shape: Shape @Composable get() = MaterialTheme.shapes.large
+    internal val elevation: Dp = 0.dp
+
+    internal val containerColorDefault: Color @Composable get() = MaterialTheme.colorScheme.background
+    internal val contentColorDefault: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+    internal val borderStrokeColorDefault: Color @Composable get() = MaterialTheme.colorScheme.outline
+    internal val shadowColorDefault: Color @Composable get() = Color.Black.copy(alpha = 0.08f)
+
+    @Composable
+    fun colors(
+        containerColor: Color = containerColorDefault,
+        containerBrush: Brush? = null,
+        contentColor: Color = contentColorDefault,
+        borderStrokeColor: Color = borderStrokeColorDefault,
+        shadowColor: Color = shadowColorDefault,
+    ): BlockColors = BlockColors(
+        containerColor = containerColor,
+        containerBrush = containerBrush,
+        contentColor = contentColor,
+        borderStrokeColor = borderStrokeColor,
+        shadowColor = shadowColor,
+    )
+
+    @Composable
+    fun sizes(
+        contentPadding: PaddingValues = PaddingValues(all = Size.Padding.Default),
+        headerPadding: PaddingValues = PaddingValues(start = Size.Padding.Default, end = Size.Padding.Default, top = Size.Padding.Default, bottom = 0.dp),
+        footerPadding: PaddingValues = PaddingValues(start = Size.Padding.Default, end = Size.Padding.Default, top = 0.dp, bottom = Size.Padding.Default),
+        elevation: Dp = BlockDefaults.elevation,
+    ): BlockSizes = BlockSizes(
+        contentPadding = contentPadding,
+        headerPadding = headerPadding,
+        footerPadding = footerPadding,
+        elevation = elevation,
+    )
+}
+
+@Immutable
+open class BlockColors internal constructor(
+    private val containerColor: Color,
+    private val containerBrush: Brush?,
+    private val contentColor: Color,
+    private val borderStrokeColor: Color,
+    private val shadowColor: Color,
+) {
+    @Composable
+    internal fun containerColor(): Color = containerColor
+
+    @Composable
+    internal fun containerBrush(): Brush? = containerBrush
+
+    @Composable
+    internal fun contentColor(): Color = contentColor
+
+    @Composable
+    internal fun borderStrokeColor(): Color = borderStrokeColor
+
+    @Composable
+    internal fun shadowColor(): Color = shadowColor
+}
+
+@Immutable
+open class BlockSizes internal constructor(
+    private val contentPadding: PaddingValues,
+    private val headerPadding: PaddingValues = contentPadding,
+    private val footerPadding: PaddingValues = contentPadding,
+    private val elevation: Dp,
+) {
+    @Composable
+    internal fun contentPadding(): PaddingValues = contentPadding
+
+    @Composable
+    internal fun headerPadding(): PaddingValues = headerPadding
+
+    @Composable
+    internal fun footerPadding(): PaddingValues = footerPadding
+
+    @Composable
+    internal fun elevation(): Dp = elevation
 }

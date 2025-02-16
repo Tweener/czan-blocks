@@ -77,7 +77,9 @@ private fun BlockWithElevationPreview() {
                 modifier = Modifier.fillMaxWidth(),
                 title = "This is a Block's title",
                 headline = "And this is an optional Block's headline",
-                elevation = 8.dp,
+                sizes = BlockDefaults.sizes(
+                    elevation = 8.dp,
+                ),
             ) {
                 Text(text = "This is a Block's content")
             }

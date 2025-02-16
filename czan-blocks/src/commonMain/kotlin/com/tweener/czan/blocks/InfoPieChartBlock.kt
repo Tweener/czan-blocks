@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
@@ -29,6 +30,7 @@ import com.tweener.czan.blocks.theme.onBackgroundVariant
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.theme.Size
 import com.tweener.kmpkit.kotlinextensions.degrees
+import com.tweener.kmpkit.utils.Degrees
 
 @Composable
 fun InfoPieChartBlock(
@@ -36,12 +38,12 @@ fun InfoPieChartBlock(
     progressInfo: String,
     segments: List<Segment>,
     modifier: Modifier = Modifier,
-    elevation: Dp = 0.dp,
     headline: String? = null,
     totalInfo: String? = null,
     progressHeadline: String? = null,
-    chartSize: Dp = 96.dp,
-    animationDurationMillis: Int = 500,
+    chartSize: Dp = InfoPieChartBlockDefaults.chartSize,
+    chartStartAngleFromOrigin: Degrees = InfoPieChartBlockDefaults.chartStartAngleFromOrigin,
+    animationDurationMillis: Int = InfoPieChartBlockDefaults.animationDurationMillis,
     onSegmentClicked: ((Segment, Active) -> Unit)? = null,
     extraTitle: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
@@ -50,7 +52,6 @@ fun InfoPieChartBlock(
         modifier = modifier,
         title = title,
         headline = headline,
-        elevation = elevation,
         extraTitle = extraTitle,
     ) {
         Row(
@@ -106,8 +107,12 @@ fun InfoPieChartBlock(
                 DonutChart(
                     modifier = Modifier.fillMaxWidth(),
                     segments = segments,
-                    startAngleFromOrigin = 270f.degrees,
-                    sizes = DonutChartDefault.sizes(strokeWidth = 8.dp, selectedStrokeWidth = 8.dp, angleBetweenSegments = 0f.degrees),
+                    startAngleFromOrigin = chartStartAngleFromOrigin,
+                    sizes = DonutChartDefault.sizes(
+                        strokeWidth = InfoPieChartBlockDefaults.strokeWidth,
+                        selectedStrokeWidth = InfoPieChartBlockDefaults.selectedStrokeWidth,
+                        angleBetweenSegments = InfoPieChartBlockDefaults.angleBetweenSegments,
+                    ),
                     animated = true,
                     animationDurationMillis = animationDurationMillis,
                     strokeCap = StrokeCap.Butt,
@@ -118,4 +123,39 @@ fun InfoPieChartBlock(
             }
         }
     }
+}
+
+
+object InfoPieChartBlockDefaults {
+
+    internal val chartSize: Dp = 96.dp
+    internal val animationDurationMillis: Int = 500
+    internal val chartStartAngleFromOrigin = 270f.degrees
+    internal val strokeWidth: Dp = 8.dp
+    internal val selectedStrokeWidth: Dp = 8.dp
+    internal val angleBetweenSegments: Degrees = 0f.degrees
+
+    fun sizes(
+        strokeWidth: Dp = InfoPieChartBlockDefaults.strokeWidth,
+        selectedStrokeWidth: Dp = InfoPieChartBlockDefaults.selectedStrokeWidth,
+        angleBetweenSegments: Degrees = InfoPieChartBlockDefaults.angleBetweenSegments,
+    ): InfoPieChartBlockSizes = InfoPieChartBlockSizes(
+        strokeWidth = strokeWidth,
+        selectedStrokeWidth = selectedStrokeWidth,
+        angleBetweenSegments = angleBetweenSegments
+    )
+}
+
+
+@Immutable
+open class InfoPieChartBlockSizes internal constructor(
+    private val strokeWidth: Dp,
+    private val selectedStrokeWidth: Dp,
+    private val angleBetweenSegments: Degrees,
+) {
+    internal fun strokeWidth(): Dp = strokeWidth
+
+    internal fun selectedStrokeWidth(): Dp = selectedStrokeWidth
+
+    internal fun angleBetweenSegments(): Degrees = angleBetweenSegments
 }
