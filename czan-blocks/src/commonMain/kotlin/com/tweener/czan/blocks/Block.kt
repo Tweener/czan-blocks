@@ -30,12 +30,12 @@ import com.tweener.czan.theme.Size
 
 @Composable
 fun Block(
-    title: String,
     modifier: Modifier = Modifier,
+    title: String? = null,
+    headline: String? = null,
     shape: Shape = BlockDefaults.shape,
     colors: BlockColors = BlockDefaults.colors(),
     sizes: BlockSizes = BlockDefaults.sizes(),
-    headline: String? = null,
     onClick: (() -> Unit)? = null,
     extraTitle: @Composable (() -> Unit)? = null,
     footer: @Composable (() -> Unit)? = null,
@@ -59,36 +59,38 @@ fun Block(
         ),
         showDividers = false,
         onClick = onClick,
-        header = {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
-                verticalAlignment = Alignment.Top,
-            ) {
-                Column(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(Size.Padding.Tiny),
+        header = title?.let {
+            {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
+                    verticalAlignment = Alignment.Top,
                 ) {
-                    Text(
-                        text = title,
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Medium,
-                        lines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-
-                    headline?.let {
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(Size.Padding.Tiny),
+                    ) {
                         Text(
-                            text = it,
-                            color = MaterialTheme.colorScheme.onBackgroundVariant,
-                            style = MaterialTheme.typography.bodyLarge,
+                            text = title,
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Medium,
                             lines = 1,
                             overflow = TextOverflow.Ellipsis,
                         )
-                    }
-                }
 
-                extraTitle?.invoke()
+                        headline?.let {
+                            Text(
+                                text = it,
+                                color = MaterialTheme.colorScheme.onBackgroundVariant,
+                                style = MaterialTheme.typography.bodyLarge,
+                                lines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                            )
+                        }
+                    }
+
+                    extraTitle?.invoke()
+                }
             }
         },
         footer = footer?.let { { it() } }

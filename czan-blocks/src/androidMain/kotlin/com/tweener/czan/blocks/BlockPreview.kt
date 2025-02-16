@@ -18,6 +18,20 @@ import com.tweener.czan.theme.Size
 
 @UiModePreviews
 @Composable
+private fun BlockNoTitlePreview() {
+    CzanThemePreview {
+        Box(modifier = Modifier.padding(Size.Padding.Default)) {
+            Block(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(text = "This is a Block's content")
+            }
+        }
+    }
+}
+
+@UiModePreviews
+@Composable
 private fun BlockPreview() {
     CzanThemePreview {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
@@ -40,7 +54,7 @@ private fun BlockWithExtraTitlePreview() {
             Block(
                 modifier = Modifier.fillMaxWidth(),
                 title = "This is a Block's title",
-                headline = "And this is an optional Block's headline",
+                headline = "And this is an optional Block's headline azezar aze",
                 extraTitle = { Text(text = "+6.8%") },
             ) {
                 Text(text = "This is a Block's content")
