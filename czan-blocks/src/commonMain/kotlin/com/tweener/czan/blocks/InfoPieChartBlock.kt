@@ -8,7 +8,6 @@ package com.tweener.czan.blocks
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -17,8 +16,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tweener.chartopia.type.donut.Active
 import com.tweener.chartopia.type.donut.DonutChart
@@ -26,33 +27,31 @@ import com.tweener.chartopia.type.donut.DonutChartDefault
 import com.tweener.chartopia.type.donut.model.Segment
 import com.tweener.czan.blocks.theme.onBackgroundVariant
 import com.tweener.czan.designsystem.atom.text.Text
-import com.tweener.czan.designsystem.organism.card.Card
-import com.tweener.czan.designsystem.organism.card.CardDefaults
 import com.tweener.czan.theme.Size
 import com.tweener.kmpkit.kotlinextensions.degrees
 
 @Composable
 fun InfoPieChartBlock(
     title: String,
+    progressInfo: String,
     segments: List<Segment>,
     modifier: Modifier = Modifier,
+    elevation: Dp = 0.dp,
     headline: String? = null,
+    totalInfo: String? = null,
+    progressHeadline: String? = null,
+    chartSize: Dp = 96.dp,
     animationDurationMillis: Int = 500,
     onSegmentClicked: ((Segment, Active) -> Unit)? = null,
+    extraTitle: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
-    Card(
+    Block(
         modifier = modifier,
-        colors = CardDefaults.colors(
-            containerColor = MaterialTheme.colorScheme.background,
-            contentColor = MaterialTheme.colorScheme.onBackground,
-            borderStrokeColor = MaterialTheme.colorScheme.outline,
-        ),
-        sizes = CardDefaults.sizes(
-            elevation = 0.dp,
-            contentPadding = PaddingValues(start = Size.Padding.Default, end = Size.Padding.ExtraSmall, top = Size.Padding.Tiny, bottom = Size.Padding.Tiny),
-        ),
-        showDividers = false,
+        title = title,
+        headline = headline,
+        elevation = elevation,
+        extraTitle = extraTitle,
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -63,15 +62,33 @@ fun InfoPieChartBlock(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(Size.Padding.Tiny),
             ) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.headlineLarge,
-                    fontWeight = FontWeight.Bold,
-                    lines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        modifier = Modifier.alignBy(LastBaseline),
+                        text = progressInfo,
+                        style = MaterialTheme.typography.headlineLarge,
+                        fontWeight = FontWeight.Bold,
+                        lines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
 
-                headline?.let {
+                    totalInfo?.let {
+                        Text(
+                            modifier = Modifier.alignBy(LastBaseline),
+                            text = it,
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onBackgroundVariant,
+                            fontWeight = FontWeight.Normal,
+                            lines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
+                }
+
+                progressHeadline?.let {
                     Text(
                         text = it,
                         color = MaterialTheme.colorScheme.onBackgroundVariant,
@@ -83,14 +100,14 @@ fun InfoPieChartBlock(
             }
 
             Box(
-                modifier = Modifier.size(116.dp),
+                modifier = Modifier.size(chartSize),
                 contentAlignment = Alignment.Center,
             ) {
                 DonutChart(
                     modifier = Modifier.fillMaxWidth(),
                     segments = segments,
                     startAngleFromOrigin = 270f.degrees,
-                    sizes = DonutChartDefault.chartSizes(strokeWidth = 8.dp, selectedStrokeWidth = 8.dp, angleBetweenSegments = 0f.degrees),
+                    sizes = DonutChartDefault.sizes(strokeWidth = 8.dp, selectedStrokeWidth = 8.dp, angleBetweenSegments = 0f.degrees),
                     animated = true,
                     animationDurationMillis = animationDurationMillis,
                     strokeCap = StrokeCap.Butt,

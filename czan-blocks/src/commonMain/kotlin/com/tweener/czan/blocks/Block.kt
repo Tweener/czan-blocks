@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.blocks.theme.onBackgroundVariant
 import com.tweener.czan.designsystem.atom.text.Text
@@ -27,6 +28,7 @@ import com.tweener.czan.theme.Size
 fun Block(
     title: String,
     modifier: Modifier = Modifier,
+    elevation: Dp = 0.dp,
     headline: String? = null,
     extraTitle: @Composable (() -> Unit)? = null,
     footer: @Composable (() -> Unit)? = null,
@@ -40,41 +42,40 @@ fun Block(
             borderStrokeColor = MaterialTheme.colorScheme.outline,
         ),
         sizes = CardDefaults.sizes(
-            elevation = 0.dp,
-            contentPadding = PaddingValues(Size.Padding.Small),
+            elevation = elevation,
+            contentPadding = PaddingValues(Size.Padding.Default),
         ),
         showDividers = false,
         header = {
-            Column(
+            Row(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(Size.Padding.Tiny),
+                horizontalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
+                verticalAlignment = Alignment.Top,
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
-                    verticalAlignment = Alignment.Top,
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(Size.Padding.Tiny),
                 ) {
                     Text(
-                        modifier = Modifier.weight(1f),
                         text = title,
-                        style = MaterialTheme.typography.titleMedium,
+                        style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Medium,
                         lines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
 
-                    extraTitle?.invoke()
+                    headline?.let {
+                        Text(
+                            text = it,
+                            color = MaterialTheme.colorScheme.onBackgroundVariant,
+                            style = MaterialTheme.typography.bodyLarge,
+                            lines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
                 }
 
-                headline?.let {
-                    Text(
-                        text = it,
-                        color = MaterialTheme.colorScheme.onBackgroundVariant,
-                        style = MaterialTheme.typography.bodyLarge,
-                        lines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                }
+                extraTitle?.invoke()
             }
         },
         footer = footer?.let { { it() } }

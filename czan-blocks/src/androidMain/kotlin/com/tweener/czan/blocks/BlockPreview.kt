@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.tweener.czan.blocks.theme.CzanThemePreview
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.preview.UiModePreviews
@@ -60,6 +61,23 @@ private fun BlockWithFooterPreview() {
                 footer = {
                     Text(text = "This is an optional Block's footer")
                 },
+            ) {
+                Text(text = "This is a Block's content")
+            }
+        }
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun BlockWithElevationPreview() {
+    CzanThemePreview {
+        Box(modifier = Modifier.padding(Size.Padding.Default)) {
+            Block(
+                modifier = Modifier.fillMaxWidth(),
+                title = "This is a Block's title",
+                headline = "And this is an optional Block's headline",
+                elevation = 8.dp,
             ) {
                 Text(text = "This is a Block's content")
             }
