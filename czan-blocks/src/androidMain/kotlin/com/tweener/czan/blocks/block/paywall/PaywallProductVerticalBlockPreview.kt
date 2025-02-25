@@ -1,4 +1,4 @@
-package com.tweener.czan.blocks
+package com.tweener.czan.blocks.block.paywall
 
 /**
  * @author Vivien Mahe
@@ -24,17 +24,16 @@ import com.tweener.czan.theme.Size
 
 @UiModePreviews
 @Composable
-private fun PaywallProductCardSelectedPreview() {
+private fun PaywallProductVerticalBlockSelectedPreview() {
     CzanThemePreview {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
-            PaywallProductCard(
+            PaywallProductVerticalBlock(
                 selected = true,
                 productTitle = "Monthly",
-                productHeadline = "7-day free trial",
                 productAmount = "1.99 €",
                 productAmountHeadline = "per month",
-                colors = PaywallProductCardDefaults.colors(),
-                sizes = PaywallProductCardDefaults.sizes(selectedBorderStrokeWidth = 2.dp),
+                colors = PaywallProductBlockDefaults.colors(),
+                sizes = PaywallProductBlockDefaults.sizes(selectedBorderStrokeWidth = 2.dp),
             )
         }
     }
@@ -42,16 +41,16 @@ private fun PaywallProductCardSelectedPreview() {
 
 @UiModePreviews
 @Composable
-private fun PaywallProductCardNotSelectedPreview() {
+private fun PaywallProductVerticalBlockNotSelectedPreview() {
     CzanThemePreview {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
-            PaywallProductCard(
+            PaywallProductVerticalBlock(
                 selected = false,
                 productTitle = "Monthly",
                 productAmount = "1.99 €",
                 productAmountHeadline = "per month",
-                colors = PaywallProductCardDefaults.colors(),
-                sizes = PaywallProductCardDefaults.sizes(borderStrokeWidth = 1.dp),
+                colors = PaywallProductBlockDefaults.colors(),
+                sizes = PaywallProductBlockDefaults.sizes(borderStrokeWidth = 1.dp),
             )
         }
     }
@@ -59,17 +58,16 @@ private fun PaywallProductCardNotSelectedPreview() {
 
 @UiModePreviews
 @Composable
-private fun PaywallProductCardWithPromoChipPreview() {
+private fun PaywallProductVerticalBlockWithPromoChipPreview() {
     CzanThemePreview {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
-            PaywallProductCard(
+            PaywallProductVerticalBlock(
                 selected = true,
                 productTitle = "Monthly",
-                productHeadline = "7-day free trial",
                 productAmount = "1.99 €",
                 productAmountHeadline = "per month",
                 promoTagText = "50% OFF!",
-                colors = PaywallProductCardDefaults.colors(
+                colors = PaywallProductBlockDefaults.colors(
                     promoTagContainerColor = MaterialTheme.colorScheme.errorContainer,
                     promoTagContentColor = MaterialTheme.colorScheme.onErrorContainer,
                 ),
@@ -80,16 +78,15 @@ private fun PaywallProductCardWithPromoChipPreview() {
 
 @UiModePreviews
 @Composable
-private fun PaywallProductCardWithPromoChipBrushPreview() {
+private fun PaywallProductVerticalBlockWithPromoChipBrushPreview() {
     CzanThemePreview {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
-            PaywallProductCard(
+            PaywallProductVerticalBlock(
                 selected = true,
                 productTitle = "Monthly",
-                productHeadline = "A very long headline text to see how it behaves",
                 productAmount = "1.99 €",
                 promoTagText = "50% OFF!",
-                colors = PaywallProductCardDefaults.colors(
+                colors = PaywallProductBlockDefaults.colors(
                     promoTagContainerBrush = Brush.linearGradient(
                         0.0f to MaterialTheme.colorScheme.errorContainer,
                         1.0f to MaterialTheme.colorScheme.primaryContainer,

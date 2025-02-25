@@ -1,4 +1,4 @@
-package com.tweener.czan.blocks
+package com.tweener.czan.blocks.block
 
 /**
  * @author Vivien Mahe
@@ -41,6 +41,9 @@ fun Block(
     footer: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
+    val cardBorderWidth = if (sizes.elevation() == 0.dp) sizes.borderStrokeWidth() else 0.dp
+    val cardBorderColor = if (sizes.elevation() == 0.dp) colors.borderStrokeColor() else Color.Transparent
+
     Card(
         modifier = modifier,
         shape = shape,
@@ -48,7 +51,7 @@ fun Block(
             containerColor = colors.containerColor(),
             containerBrush = colors.containerBrush(),
             contentColor = colors.contentColor(),
-            borderStrokeColor = colors.borderStrokeColor(),
+            borderStrokeColor = cardBorderColor,
             shadowColor = colors.shadowColor(),
         ),
         sizes = CardDefaults.sizes(
@@ -56,6 +59,7 @@ fun Block(
             contentPadding = sizes.contentPadding(),
             headerPadding = sizes.headerPadding(),
             footerPadding = sizes.footerPadding(),
+            borderStrokeWidth = cardBorderWidth,
         ),
         showDividers = false,
         onClick = onClick,
@@ -103,11 +107,12 @@ object BlockDefaults {
 
     internal val shape: Shape @Composable get() = MaterialTheme.shapes.large
     internal val elevation: Dp = 0.dp
+    internal val borderStrokeWidth: Dp = 1.dp
 
-    internal val containerColorDefault: Color @Composable get() = MaterialTheme.colorScheme.background
-    internal val contentColorDefault: Color @Composable get() = MaterialTheme.colorScheme.onBackground
-    internal val borderStrokeColorDefault: Color @Composable get() = MaterialTheme.colorScheme.outline
-    internal val shadowColorDefault: Color @Composable get() = Color.Black.copy(alpha = 0.08f)
+    private val containerColorDefault: Color @Composable get() = MaterialTheme.colorScheme.background
+    private val contentColorDefault: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+    private val borderStrokeColorDefault: Color @Composable get() = MaterialTheme.colorScheme.outline
+    private val shadowColorDefault: Color @Composable get() = Color.Black.copy(alpha = 0.08f)
 
     @Composable
     fun colors(
@@ -130,11 +135,13 @@ object BlockDefaults {
         headerPadding: PaddingValues = PaddingValues(start = Size.Padding.Default, end = Size.Padding.Default, top = Size.Padding.Default, bottom = 0.dp),
         footerPadding: PaddingValues = PaddingValues(start = Size.Padding.Default, end = Size.Padding.Default, top = 0.dp, bottom = Size.Padding.Default),
         elevation: Dp = BlockDefaults.elevation,
+        borderStrokeWidth: Dp = BlockDefaults.borderStrokeWidth,
     ): BlockSizes = BlockSizes(
         contentPadding = contentPadding,
         headerPadding = headerPadding,
         footerPadding = footerPadding,
         elevation = elevation,
+        borderStrokeWidth = borderStrokeWidth,
     )
 }
 
@@ -168,16 +175,15 @@ open class BlockSizes internal constructor(
     private val headerPadding: PaddingValues = contentPadding,
     private val footerPadding: PaddingValues = contentPadding,
     private val elevation: Dp,
+    private val borderStrokeWidth: Dp,
 ) {
-    @Composable
     internal fun contentPadding(): PaddingValues = contentPadding
 
-    @Composable
     internal fun headerPadding(): PaddingValues = headerPadding
 
-    @Composable
     internal fun footerPadding(): PaddingValues = footerPadding
 
-    @Composable
     internal fun elevation(): Dp = elevation
+
+    internal fun borderStrokeWidth(): Dp = borderStrokeWidth
 }

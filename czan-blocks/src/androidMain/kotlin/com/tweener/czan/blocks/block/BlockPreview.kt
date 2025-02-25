@@ -1,4 +1,4 @@
-package com.tweener.czan.blocks
+package com.tweener.czan.blocks.block
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth

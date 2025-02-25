@@ -1,4 +1,4 @@
-package com.tweener.czan.blocks
+package com.tweener.czan.blocks.block.charts
 
 /**
  * @author Vivien Mahe
@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +27,8 @@ import com.tweener.chartopia.type.donut.Active
 import com.tweener.chartopia.type.donut.DonutChart
 import com.tweener.chartopia.type.donut.DonutChartDefault
 import com.tweener.chartopia.type.donut.model.Segment
+import com.tweener.czan.blocks.block.Block
+import com.tweener.czan.blocks.block.BlockDefaults
 import com.tweener.czan.blocks.theme.onBackgroundVariant
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.theme.Size
@@ -41,9 +44,9 @@ fun InfoPieChartBlock(
     headline: String? = null,
     totalInfo: String? = null,
     progressHeadline: String? = null,
-    chartSize: Dp = InfoPieChartBlockDefaults.chartSize,
-    chartStartAngleFromOrigin: Degrees = InfoPieChartBlockDefaults.chartStartAngleFromOrigin,
-    animationDurationMillis: Int = InfoPieChartBlockDefaults.animationDurationMillis,
+    shape: Shape = BlockDefaults.shape,
+    sizes: InfoPieChartBlockSizes = InfoPieChartBlockDefaults.sizes(),
+    animationDurationMillis: Int = InfoPieChartBlockDefaults.ANIMATION_DURATION_MILLIS,
     onSegmentClicked: ((Segment, Active) -> Unit)? = null,
     extraTitle: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
@@ -53,6 +56,10 @@ fun InfoPieChartBlock(
         title = title,
         headline = headline,
         extraTitle = extraTitle,
+        shape = shape,
+        sizes = BlockDefaults.sizes(
+            elevation = sizes.elevation(),
+        ),
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -101,17 +108,17 @@ fun InfoPieChartBlock(
             }
 
             Box(
-                modifier = Modifier.size(chartSize),
+                modifier = Modifier.size(sizes.chartSize()),
                 contentAlignment = Alignment.Center,
             ) {
                 DonutChart(
                     modifier = Modifier.fillMaxWidth(),
                     segments = segments,
-                    startAngleFromOrigin = chartStartAngleFromOrigin,
+                    startAngleFromOrigin = sizes.chartStartAngleFromOrigin(),
                     sizes = DonutChartDefault.sizes(
-                        strokeWidth = InfoPieChartBlockDefaults.strokeWidth,
-                        selectedStrokeWidth = InfoPieChartBlockDefaults.selectedStrokeWidth,
-                        angleBetweenSegments = InfoPieChartBlockDefaults.angleBetweenSegments,
+                        strokeWidth = sizes.chartStrokeWidth(),
+                        selectedStrokeWidth = sizes.chartSelectedStrokeWidth(),
+                        angleBetweenSegments = sizes.chartAngleBetweenSegments(),
                     ),
                     animated = true,
                     animationDurationMillis = animationDurationMillis,
@@ -128,34 +135,49 @@ fun InfoPieChartBlock(
 
 object InfoPieChartBlockDefaults {
 
-    internal val chartSize: Dp = 96.dp
-    internal val animationDurationMillis: Int = 500
-    internal val chartStartAngleFromOrigin = 270f.degrees
-    internal val strokeWidth: Dp = 8.dp
-    internal val selectedStrokeWidth: Dp = 8.dp
-    internal val angleBetweenSegments: Degrees = 0f.degrees
+    internal const val ANIMATION_DURATION_MILLIS: Int = 500
+    private val chartSize: Dp = 96.dp
+    private val chartStartAngleFromOrigin = 270f.degrees
+    private val chartStrokeWidth: Dp = 8.dp
+    private val chartSelectedStrokeWidth: Dp = 8.dp
+    private val chartAngleBetweenSegments: Degrees = 0f.degrees
 
     fun sizes(
-        strokeWidth: Dp = InfoPieChartBlockDefaults.strokeWidth,
-        selectedStrokeWidth: Dp = InfoPieChartBlockDefaults.selectedStrokeWidth,
-        angleBetweenSegments: Degrees = InfoPieChartBlockDefaults.angleBetweenSegments,
+        elevation: Dp = BlockDefaults.elevation,
+        chartSize: Dp = InfoPieChartBlockDefaults.chartSize,
+        chartStrokeWidth: Dp = InfoPieChartBlockDefaults.chartStrokeWidth,
+        chartSelectedStrokeWidth: Dp = InfoPieChartBlockDefaults.chartSelectedStrokeWidth,
+        chartStartAngleFromOrigin: Degrees = InfoPieChartBlockDefaults.chartStartAngleFromOrigin,
+        chartAngleBetweenSegments: Degrees = InfoPieChartBlockDefaults.chartAngleBetweenSegments,
     ): InfoPieChartBlockSizes = InfoPieChartBlockSizes(
-        strokeWidth = strokeWidth,
-        selectedStrokeWidth = selectedStrokeWidth,
-        angleBetweenSegments = angleBetweenSegments
+        chartSize = chartSize,
+        elevation = elevation,
+        chartStrokeWidth = chartStrokeWidth,
+        chartSelectedStrokeWidth = chartSelectedStrokeWidth,
+        chartStartAngleFromOrigin = chartStartAngleFromOrigin,
+        chartAngleBetweenSegments = chartAngleBetweenSegments,
     )
 }
 
 
 @Immutable
 open class InfoPieChartBlockSizes internal constructor(
-    private val strokeWidth: Dp,
-    private val selectedStrokeWidth: Dp,
-    private val angleBetweenSegments: Degrees,
+    private val elevation: Dp,
+    private val chartSize: Dp,
+    private val chartStrokeWidth: Dp,
+    private val chartSelectedStrokeWidth: Dp,
+    private val chartStartAngleFromOrigin: Degrees,
+    private val chartAngleBetweenSegments: Degrees,
 ) {
-    internal fun strokeWidth(): Dp = strokeWidth
+    internal fun elevation(): Dp = elevation
 
-    internal fun selectedStrokeWidth(): Dp = selectedStrokeWidth
+    internal fun chartSize(): Dp = chartSize
 
-    internal fun angleBetweenSegments(): Degrees = angleBetweenSegments
+    internal fun chartStrokeWidth(): Dp = chartStrokeWidth
+
+    internal fun chartSelectedStrokeWidth(): Dp = chartSelectedStrokeWidth
+
+    internal fun chartStartAngleFromOrigin(): Degrees = chartStartAngleFromOrigin
+
+    internal fun chartAngleBetweenSegments(): Degrees = chartAngleBetweenSegments
 }
