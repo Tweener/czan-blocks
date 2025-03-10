@@ -132,7 +132,6 @@ fun InfoPieChartBlock(
     }
 }
 
-
 object InfoPieChartBlockDefaults {
 
     internal const val ANIMATION_DURATION_MILLIS: Int = 500
@@ -143,22 +142,21 @@ object InfoPieChartBlockDefaults {
     private val chartAngleBetweenSegments: Degrees = 0f.degrees
 
     fun sizes(
-        elevation: Dp = BlockDefaults.elevation,
+        elevation: Dp = BlockDefaults.elevationDefault,
         chartSize: Dp = InfoPieChartBlockDefaults.chartSize,
         chartStrokeWidth: Dp = InfoPieChartBlockDefaults.chartStrokeWidth,
         chartSelectedStrokeWidth: Dp = InfoPieChartBlockDefaults.chartSelectedStrokeWidth,
         chartStartAngleFromOrigin: Degrees = InfoPieChartBlockDefaults.chartStartAngleFromOrigin,
         chartAngleBetweenSegments: Degrees = InfoPieChartBlockDefaults.chartAngleBetweenSegments,
     ): InfoPieChartBlockSizes = InfoPieChartBlockSizes(
-        chartSize = chartSize,
         elevation = elevation,
+        chartSize = chartSize,
         chartStrokeWidth = chartStrokeWidth,
         chartSelectedStrokeWidth = chartSelectedStrokeWidth,
         chartStartAngleFromOrigin = chartStartAngleFromOrigin,
         chartAngleBetweenSegments = chartAngleBetweenSegments,
     )
 }
-
 
 @Immutable
 open class InfoPieChartBlockSizes internal constructor(

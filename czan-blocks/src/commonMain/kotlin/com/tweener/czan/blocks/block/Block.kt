@@ -106,13 +106,17 @@ fun Block(
 object BlockDefaults {
 
     internal val shape: Shape @Composable get() = MaterialTheme.shapes.large
-    internal val elevation: Dp = 0.dp
-    internal val borderStrokeWidth: Dp = 1.dp
 
-    private val containerColorDefault: Color @Composable get() = MaterialTheme.colorScheme.background
-    private val contentColorDefault: Color @Composable get() = MaterialTheme.colorScheme.onBackground
-    private val borderStrokeColorDefault: Color @Composable get() = MaterialTheme.colorScheme.outline
-    private val shadowColorDefault: Color @Composable get() = Color.Black.copy(alpha = 0.08f)
+    internal val contentPaddingDefault: PaddingValues = PaddingValues(all = Size.Padding.Default)
+    internal val headerPaddingDefault: PaddingValues = PaddingValues(start = Size.Padding.Default, end = Size.Padding.Default, top = Size.Padding.Default, bottom = 0.dp)
+    internal val footerPaddingDefault: PaddingValues = PaddingValues(start = Size.Padding.Default, end = Size.Padding.Default, top = 0.dp, bottom = Size.Padding.Default)
+    internal val elevationDefault: Dp = 0.dp
+    internal val borderStrokeWidthDefault: Dp = 1.dp
+
+    internal val containerColorDefault: Color @Composable get() = MaterialTheme.colorScheme.background
+    internal val contentColorDefault: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+    internal val borderStrokeColorDefault: Color @Composable get() = MaterialTheme.colorScheme.outline
+    internal val shadowColorDefault: Color @Composable get() = Color.Black.copy(alpha = 0.08f)
 
     @Composable
     fun colors(
@@ -131,11 +135,11 @@ object BlockDefaults {
 
     @Composable
     fun sizes(
-        contentPadding: PaddingValues = PaddingValues(all = Size.Padding.Default),
-        headerPadding: PaddingValues = PaddingValues(start = Size.Padding.Default, end = Size.Padding.Default, top = Size.Padding.Default, bottom = 0.dp),
-        footerPadding: PaddingValues = PaddingValues(start = Size.Padding.Default, end = Size.Padding.Default, top = 0.dp, bottom = Size.Padding.Default),
-        elevation: Dp = BlockDefaults.elevation,
-        borderStrokeWidth: Dp = BlockDefaults.borderStrokeWidth,
+        contentPadding: PaddingValues = contentPaddingDefault,
+        headerPadding: PaddingValues = headerPaddingDefault,
+        footerPadding: PaddingValues = footerPaddingDefault,
+        elevation: Dp = elevationDefault,
+        borderStrokeWidth: Dp = borderStrokeWidthDefault,
     ): BlockSizes = BlockSizes(
         contentPadding = contentPadding,
         headerPadding = headerPadding,
