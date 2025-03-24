@@ -32,7 +32,7 @@ fun TabsBlock(
     modifier: Modifier = Modifier,
     shape: Shape = BlockDefaults.shape,
     textStyle: TextStyle = MaterialTheme.typography.bodySmall,
-    colors: TabsBlockSizesColors = TabsBlockDefaults.colors(),
+    colors: TabsBlockColors = TabsBlockDefaults.colors(),
     sizes: TabsBlockSizes = TabsBlockDefaults.sizes(),
 ) {
     var selectedTab by rememberSaveable { mutableIntStateOf(0) }
@@ -90,7 +90,7 @@ object TabsBlockDefaults {
         inactiveTabContainerColor: Color = MaterialTheme.colorScheme.surface,
         inactiveTabContentColor: Color = MaterialTheme.colorScheme.onSurface,
         inactiveTabBorderColor: Color = activeTabBorderColor,
-    ): TabsBlockSizesColors = TabsBlockSizesColors(
+    ): TabsBlockColors = TabsBlockColors(
         containerColor = containerColor,
         containerBrush = containerBrush,
         contentColor = contentColor,
@@ -120,7 +120,7 @@ object TabsBlockDefaults {
 }
 
 @Immutable
-class TabsBlockSizesColors internal constructor(
+class TabsBlockColors internal constructor(
     containerColor: Color,
     containerBrush: Brush?,
     contentColor: Color,
