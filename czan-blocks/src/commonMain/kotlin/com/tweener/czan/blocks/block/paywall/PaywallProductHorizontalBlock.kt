@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.tweener.czan._internal.kotlinextensions.conditional
@@ -35,7 +36,7 @@ fun PaywallProductHorizontalBlock(
     productAmount: String,
     modifier: Modifier = Modifier,
     productHeadline: String? = null,
-    productAmountHeadline: String? = null,
+    productAmountHeadline: AnnotatedString? = null,
     promoTagText: String? = null,
     selected: Boolean = false,
     shape: Shape = PaywallProductBlockDefaults.shape,

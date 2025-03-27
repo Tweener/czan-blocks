@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.preview.CzanThemePreview
 import com.tweener.czan.preview.UiModePreviews
@@ -31,7 +32,7 @@ private fun PaywallProductVerticalBlockSelectedPreview() {
                 selected = true,
                 productTitle = "Monthly",
                 productAmount = "1.99 €",
-                productAmountHeadline = "per month",
+                productAmountHeadline = AnnotatedString("per month"),
                 colors = PaywallProductBlockDefaults.colors(),
                 sizes = PaywallProductBlockDefaults.sizes(selectedBorderStrokeWidth = 2.dp),
             )
@@ -48,7 +49,7 @@ private fun PaywallProductVerticalBlockNotSelectedPreview() {
                 selected = false,
                 productTitle = "Monthly",
                 productAmount = "1.99 €",
-                productAmountHeadline = "per month",
+                productAmountHeadline = AnnotatedString("per month"),
                 colors = PaywallProductBlockDefaults.colors(),
                 sizes = PaywallProductBlockDefaults.sizes(borderStrokeWidth = 1.dp),
             )
@@ -65,7 +66,7 @@ private fun PaywallProductVerticalBlockWithPromoChipPreview() {
                 selected = true,
                 productTitle = "Monthly",
                 productAmount = "1.99 €",
-                productAmountHeadline = "per month",
+                productAmountHeadline = AnnotatedString("per month"),
                 promoTagText = "50% OFF!",
                 colors = PaywallProductBlockDefaults.colors(
                     promoTagContainerColor = MaterialTheme.colorScheme.errorContainer,
