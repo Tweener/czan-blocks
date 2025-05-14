@@ -15,9 +15,10 @@ object ProjectConfiguration {
         const val minSDK = 24
 
         object Maven {
-            const val name = "MyKMPLibrary"
+            const val name = "CzanBlocks"
             const val description = "Clean, customizable blocks for Kotlin/Compose Multiplatform apps based on CZAN design system."
             const val group = "io.github.tweener"
+            const val artifactId = "czan-blocks"
             const val packageUrl = "https://github.com/Tweener/czan-blocks"
             const val gitUrl = "github.com:Tweener/czan-blocks.git"
 

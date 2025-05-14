@@ -136,7 +136,7 @@ version = ProjectConfiguration.CzanBlocks.versionName
 mavenPublishing {
     publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     signAllPublications()
-    coordinates(groupId = group.toString(), artifactId = ProjectConfiguration.CzanBlocks.Maven.name.lowercase(), version = version.toString())
+    coordinates(groupId = group.toString(), artifactId = ProjectConfiguration.CzanBlocks.Maven.artifactId, version = version.toString())
     configure(
         platform = KotlinMultiplatform(
             javadocJar = JavadocJar.Dokka("dokkaHtml"),
