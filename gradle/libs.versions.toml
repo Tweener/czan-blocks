@@ -1,16 +1,18 @@
 [versions]
-kotlin = "2.1.10"
-gradle = "8.8.2"
-dependencyVersionsPlugin = "0.51.0"
-mavenPublish = "0.30.0"
-dokka = "1.9.20"
+kotlin = "2.2.0"
+gradle = "8.11.0"
+composeMultiplatform = "1.8.2"
+dependencyVersionsPlugin = "0.52.0"
+mavenPublish = "0.33.0"
+dokka = "2.0.0"
 androidAnnotations = "1.9.1"
 coroutines = "1.10.2"
 napier = "2.7.1"
-composeMultiplatform = "1.8.0"
+
+# Tweener
 kmpKit = "1.0.9"
-czan = "2.9.5"
-chartopia = "2.0.5"
+czan = "2.9.7"
+chartopia = "2.0.7"
 
 # Android
 androidCore = "1.16.0"

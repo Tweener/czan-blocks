@@ -134,7 +134,7 @@ group = ProjectConfiguration.CzanBlocks.Maven.group
 version = ProjectConfiguration.CzanBlocks.versionName
 
 mavenPublishing {
-    publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+    publishToMavenCentral(automaticRelease = true)
 
     // Only disable signing if the flag is explicitly set to false
     val signAllPublicationsProperty = findProperty("mavenPublishing.signAllPublications")
