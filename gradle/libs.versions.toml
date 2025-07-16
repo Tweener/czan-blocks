@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.2.0"
-gradle = "8.11.0"
+gradle = "8.11.1"
 composeMultiplatform = "1.8.2"
 dependencyVersionsPlugin = "0.52.0"
 mavenPublish = "0.33.0"
@@ -10,9 +10,9 @@ coroutines = "1.10.2"
 napier = "2.7.1"
 
 # Tweener
-kmpKit = "1.0.9"
+kmpKit = "1.0.10"
 czan = "2.9.7"
-chartopia = "2.0.7"
+chartopia = "2.0.8"
 
 # Android
 androidCore = "1.16.0"
