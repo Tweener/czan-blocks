@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.3] - July 16, 2025
+- Update Gradle to 8.11.1.
+- Update KMPKit to 1.0.10.
+- Update Chartopia to 2.0.8.
+
 ## [1.0.2] - July 4th, 2025
 - Update Kotlin to 2.2.0.
 - Update Gradle to 8.11.0.
