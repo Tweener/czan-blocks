@@ -1,9 +1,10 @@
 [versions]
-kotlin = "2.2.0"
-gradle = "8.11.1"
-composeMultiplatform = "1.8.2"
+kotlin = "2.2.20"
+gradle = "8.13.0"
+composeMultiplatform = "1.9.0"
+material3 = "1.9.0-beta06"
 dependencyVersionsPlugin = "0.52.0"
-mavenPublish = "0.33.0"
+mavenPublish = "0.34.0"
 dokka = "2.0.0"
 androidAnnotations = "1.9.1"
 coroutines = "1.10.2"
@@ -11,16 +12,16 @@ napier = "2.7.1"
 
 # Tweener
 kmpKit = "1.0.10"
-czan = "2.9.7"
+czan = "2.9.10"
 chartopia = "2.0.8"
 
 # Android
-androidCore = "1.16.0"
-androidActivity = "1.10.1"
+androidCore = "1.17.0"
+androidActivity = "1.11.0"
 
 [libraries]
 napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
-compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "composeMultiplatform" }
+compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "material3" }
 kmpkit = { group = "io.github.tweener", name = "kmpkit", version.ref = "kmpKit" }
 czan = { group = "io.github.tweener", name = "czan", version.ref = "czan" }
 chartopia = { group = "io.github.tweener", name = "chartopia", version.ref = "chartopia" }
