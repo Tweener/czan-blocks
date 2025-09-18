@@ -41,8 +41,8 @@ fun Block(
     footer: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
-    val cardBorderWidth = if (sizes.elevation() == 0.dp) sizes.borderStrokeWidth() else 0.dp
-    val cardBorderColor = if (sizes.elevation() == 0.dp) colors.borderStrokeColor() else Color.Transparent
+//    val cardBorderWidth = if (sizes.elevation() == 0.dp) sizes.borderStrokeWidth() else 0.dp
+//    val cardBorderColor = if (sizes.elevation() == 0.dp) colors.borderStrokeColor() else Color.Transparent
 
     Card(
         modifier = modifier,
@@ -51,7 +51,7 @@ fun Block(
             containerColor = colors.containerColor(),
             containerBrush = colors.containerBrush(),
             contentColor = colors.contentColor(),
-            borderStrokeColor = cardBorderColor,
+            borderStrokeColor = colors.borderStrokeColor(),
             shadowColor = colors.shadowColor(),
         ),
         sizes = CardDefaults.sizes(
@@ -59,7 +59,7 @@ fun Block(
             contentPadding = sizes.contentPadding(),
             headerPadding = sizes.headerPadding(),
             footerPadding = sizes.footerPadding(),
-            borderStrokeWidth = cardBorderWidth,
+            borderStrokeWidth = sizes.borderStrokeWidth(),
         ),
         showDividers = false,
         onClick = onClick,
