@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.4] - September 18, 2025
+- Refactor Block to always use border color and width
+- Remove iosX64 target and update dependencies
+
 ## [1.0.3] - July 16, 2025
 - Update Gradle to 8.11.1.
 - Update KMPKit to 1.0.10.
