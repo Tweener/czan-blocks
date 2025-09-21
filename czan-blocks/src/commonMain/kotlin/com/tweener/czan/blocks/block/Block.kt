@@ -41,9 +41,6 @@ fun Block(
     footer: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
-//    val cardBorderWidth = if (sizes.elevation() == 0.dp) sizes.borderStrokeWidth() else 0.dp
-//    val cardBorderColor = if (sizes.elevation() == 0.dp) colors.borderStrokeColor() else Color.Transparent
-
     Card(
         modifier = modifier,
         shape = shape,
