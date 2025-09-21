@@ -1,6 +1,12 @@
 # Changelog
 
+## [1.0.5] - September 21, 2025
+- Update Czan to 2.10.0
+
 ## [1.0.4] - September 18, 2025
+- Update Kotlin to 2.2.20
+- Update Compose Multiplatform to 1.9.0
+- Update dependencies
 - Refactor Block to always use border color and width
 - Remove iosX64 target and update dependencies
 
