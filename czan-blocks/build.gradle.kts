@@ -144,7 +144,7 @@ mavenPublishing {
     configure(
         platform = KotlinMultiplatform(
             javadocJar = JavadocJar.Dokka("dokkaHtml"),
-            sourcesJar = false,
+            sourcesJar = true,
         )
     )
 
