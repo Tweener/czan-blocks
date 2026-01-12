@@ -1,23 +1,23 @@
 [versions]
-kotlin = "2.2.20"
-gradle = "8.13.0"
-composeMultiplatform = "1.9.0"
-material3 = "1.9.0-beta06"
-dependencyVersionsPlugin = "0.52.0"
-mavenPublish = "0.34.0"
-dokka = "2.0.0"
+kotlin = "2.3.0"
+gradle = "8.13.2"
+composeMultiplatform = "1.9.3"
+material3 = "1.9.0"
+dependencyVersionsPlugin = "0.53.0"
+mavenPublish = "0.35.0"
+dokka = "2.1.0"
 androidAnnotations = "1.9.1"
 coroutines = "1.10.2"
 napier = "2.7.1"
 
 # Tweener
-kmpKit = "1.0.10"
-czan = "2.10.0"
+kmpKit = "1.0.13"
+czan = "2.10.2"
 chartopia = "2.0.8"
 
 # Android
 androidCore = "1.17.0"
-androidActivity = "1.11.0"
+androidActivity = "1.12.2"
 
 [libraries]
 napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
@@ -40,8 +40,10 @@ android-activity-compose = { group = "androidx.activity", name = "activity-compo
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "gradle" }
 android-library = { id = "com.android.library", version.ref = "gradle" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "gradle" }
 dependency-versions = { id = "com.github.ben-manes.versions", version.ref = "dependencyVersionsPlugin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

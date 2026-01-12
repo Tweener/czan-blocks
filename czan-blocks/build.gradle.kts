@@ -5,48 +5,20 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.jetbrains.compose.compiler)
     alias(libs.plugins.dokka)
     alias(libs.plugins.maven.publish)
 }
 
-android {
-    namespace = ProjectConfiguration.CzanBlocks.namespace
-    compileSdk = ProjectConfiguration.CzanBlocks.compileSDK
-
-    defaultConfig {
-        minSdk = ProjectConfiguration.CzanBlocks.minSDK
-
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-
-        getByName("debug") {
-        }
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    compileOptions {
-        sourceCompatibility = ProjectConfiguration.Compiler.javaCompatibility
-        targetCompatibility = ProjectConfiguration.Compiler.javaCompatibility
-    }
-}
-
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    androidTarget {
-        publishLibraryVariants("release")
+    androidLibrary {
+        namespace = ProjectConfiguration.CzanBlocks.namespace
+        compileSdk = ProjectConfiguration.CzanBlocks.compileSDK
+        minSdk = ProjectConfiguration.CzanBlocks.minSDK
 
         compilerOptions {
             jvmTarget.set(JvmTarget.fromTarget(ProjectConfiguration.Compiler.jvmTarget))
@@ -143,7 +115,7 @@ mavenPublishing {
     coordinates(groupId = group.toString(), artifactId = ProjectConfiguration.CzanBlocks.Maven.artifactId, version = version.toString())
     configure(
         platform = KotlinMultiplatform(
-            javadocJar = JavadocJar.Dokka("dokkaHtml"),
+            javadocJar = JavadocJar.Dokka("dokkaGeneratePublicationHtml"),
             sourcesJar = true,
         )
     )
