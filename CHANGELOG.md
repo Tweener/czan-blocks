@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6] - January 12, 2026
+- Migrate to `com.android.kotlin.multiplatform.library` plugin for AGP 9.0 compatibility
+- Update Kotlin to 2.3.0
+- Update Compose Multiplatform to 1.9.3
+- Update Gradle to 8.13.2
+- Restructure sample app: separate Android application into dedicated module
+
 ## [1.0.5] - September 21, 2025
 - Update Czan to 2.10.0
 
