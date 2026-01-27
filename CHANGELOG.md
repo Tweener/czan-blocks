@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.7] - January 27, 2026
+- Add `fillMaxWidth` parameter to Block composable
+- Update Gradle and dependencies to latest versions
+
 ## [1.0.6] - January 12, 2026
 - Migrate to `com.android.kotlin.multiplatform.library` plugin for AGP 9.0 compatibility
 - Update Kotlin to 2.3.0
