@@ -3,6 +3,7 @@ kotlin = "2.3.0"
 gradle = "9.0.0"
 composeMultiplatform = "1.10.0"
 material3 = "1.9.0"
+materialIconsExtended = "1.7.3"
 dependencyVersionsPlugin = "0.53.0"
 mavenPublish = "0.36.0"
 dokka = "2.1.0"
@@ -21,10 +22,19 @@ androidActivity = "1.12.2"
 
 [libraries]
 napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
-compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "material3" }
 kmpkit = { group = "io.github.tweener", name = "kmpkit", version.ref = "kmpKit" }
 czan = { group = "io.github.tweener", name = "czan", version.ref = "czan" }
 chartopia = { group = "io.github.tweener", name = "chartopia", version.ref = "chartopia" }
+
+# Compose
+compose-multiplatform-runtime = { group = "org.jetbrains.compose.runtime", name = "runtime", version.ref = "composeMultiplatform" }
+compose-multiplatform-foundation = { group = "org.jetbrains.compose.foundation", name = "foundation", version.ref = "composeMultiplatform" }
+compose-multiplatform-ui = { group = "org.jetbrains.compose.ui", name = "ui", version.ref = "composeMultiplatform" }
+compose-multiplatform-uiToolingPreview = { group = "org.jetbrains.compose.ui", name = "ui-tooling-preview", version.ref = "composeMultiplatform" }
+compose-multiplatform-components-resources = { group = "org.jetbrains.compose.components", name = "components-resources", version.ref = "composeMultiplatform" }
+compose-multiplatform-material = { group = "org.jetbrains.compose.material", name = "material", version.ref = "composeMultiplatform" }
+compose-multiplatform-materialIconsExtended = { group = "org.jetbrains.compose.material", name = "material-icons-extended", version.ref = "materialIconsExtended" }
+compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "material3" }
 
 # Coroutines
 kotlin-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
@@ -36,6 +46,18 @@ android-annotations = { group = "androidx.annotation", name = "annotation", vers
 android-activity = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidActivity" }
 android-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidActivity" }
 
+[bundles]
+compose = [
+    "compose-multiplatform-runtime",
+    "compose-multiplatform-foundation",
+    "compose-multiplatform-ui",
+    "compose-multiplatform-uiToolingPreview",
+    "compose-multiplatform-components-resources",
+    "compose-multiplatform-material",
+    "compose-multiplatform-materialIconsExtended",
+    "compose-multiplatform-material3",
+]
+
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "gradle" }
@@ -46,4 +68,3 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

@@ -1,5 +1,6 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinMultiplatform
+import com.vanniktech.maven.publish.SourcesJar
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -59,13 +60,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // Compose
-            implementation(compose.ui)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.materialIconsExtended)
-            implementation(compose.runtime)
-            implementation(compose.components.resources)
-            implementation(libs.compose.multiplatform.material3)
+            implementation(libs.bundles.compose)
 
             implementation(libs.napier)
             implementation(libs.android.annotations)
@@ -81,8 +76,7 @@ kotlin {
 
         androidMain.dependencies {
             // Compose
-            api(compose.preview)
-            api(compose.uiTooling)
+            implementation(libs.compose.multiplatform.uiToolingPreview)
             implementation(libs.android.activity.compose)
 
             // Coroutines
@@ -116,7 +110,7 @@ mavenPublishing {
     configure(
         platform = KotlinMultiplatform(
             javadocJar = JavadocJar.Dokka("dokkaGeneratePublicationHtml"),
-            sourcesJar = true,
+            sourcesJar = SourcesJar.Sources(),
         )
     )
 
