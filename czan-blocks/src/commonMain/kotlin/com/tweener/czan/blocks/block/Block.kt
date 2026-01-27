@@ -36,6 +36,7 @@ fun Block(
     shape: Shape = BlockDefaults.shape,
     colors: BlockColors = BlockDefaults.colors(),
     sizes: BlockSizes = BlockDefaults.sizes(),
+    fillMaxWidth: Boolean = true,
     onClick: (() -> Unit)? = null,
     extraTitle: @Composable (() -> Unit)? = null,
     footer: @Composable (() -> Unit)? = null,
@@ -59,6 +60,7 @@ fun Block(
             borderStrokeWidth = sizes.borderStrokeWidth(),
         ),
         showDividers = false,
+        fillMaxWidth = fillMaxWidth,
         onClick = onClick,
         header = title?.let {
             {
