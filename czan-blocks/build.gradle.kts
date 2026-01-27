@@ -21,6 +21,8 @@ kotlin {
         compileSdk = ProjectConfiguration.CzanBlocks.compileSDK
         minSdk = ProjectConfiguration.CzanBlocks.minSDK
 
+        withHostTestBuilder {}
+
         compilerOptions {
             jvmTarget.set(JvmTarget.fromTarget(ProjectConfiguration.Compiler.jvmTarget))
         }
