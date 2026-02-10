@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.0.8] - February 10, 2026
+- Change strict line 1 on Headline text in Block to maxLines = 2 
+
 ## [1.0.7] - January 27, 2026
 - Add `fillMaxWidth` parameter to Block composable
 - Update Gradle and dependencies to latest versions
