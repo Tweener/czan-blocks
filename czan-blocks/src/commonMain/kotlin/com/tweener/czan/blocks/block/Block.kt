@@ -86,7 +86,7 @@ fun Block(
                                 text = it,
                                 color = MaterialTheme.colorScheme.onBackgroundVariant,
                                 style = MaterialTheme.typography.bodyLarge,
-                                lines = 1,
+                                maxLines = 2,
                                 overflow = TextOverflow.Ellipsis,
                             )
                         }
