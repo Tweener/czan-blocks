@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.0.9] - November 9, 2026
+- Update Kotlin to 2.4.21
+- Update Compose Multiplatform to 1.12.2
+- Update Gradle to 9.5.1
+- Update Gradle wrapper to 9.9.0
+- Update Czan to 2.11.5
+- Update KMPKit to 1.0.15
+- Update Dokka to 2.3.0
+- Update Maven Publish plugin to 0.37.0
+- Update Dependency Versions plugin to 0.67.0
+- Update kotlinx-coroutines to 1.11.0
+- Update Android core to 1.19.1
+- Update Android activity to 1.13.0
+- Update Android annotations to 1.11.0
+- Update Android compile SDK to 37: Compose Multiplatform 1.12 and Android core 1.19.1 require apps using CzanBlocks to compile against API 37 or later
+- Add the Apache 2.0 `LICENSE` file
+- Replace the template README with a description of the blocks and installation steps
+
 ## [1.0.8] - February 10, 2026
 - Change strict line 1 on Headline text in Block to maxLines = 2 
 
